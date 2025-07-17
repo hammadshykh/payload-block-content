@@ -69,7 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
-    banner: Banner;
+    pages: Page;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
@@ -78,7 +78,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
-    banner: BannerSelect<false> | BannerSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
     'payload-migrations': PayloadMigrationsSelect<false> | PayloadMigrationsSelect<true>;
@@ -161,17 +161,38 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "banner".
+ * via the `definition` "pages".
  */
-export interface Banner {
+export interface Page {
   id: number;
   title: string;
-  subtitle: string;
-  backgroundImage: number | Media;
-  cta: {
-    text: string;
-    url: string;
-  };
+  slug: string;
+  layout: {
+    Heading: string;
+    subheading: {
+      root: {
+        type: string;
+        children: {
+          type: string;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    image: number | Media;
+    cta_button: {
+      lable: string;
+      url: string;
+    };
+    id?: string | null;
+    blockName?: string | null;
+    blockType: 'hero';
+  }[];
   updatedAt: string;
   createdAt: string;
 }
@@ -191,8 +212,8 @@ export interface PayloadLockedDocument {
         value: number | Media;
       } | null)
     | ({
-        relationTo: 'banner';
-        value: number | Banner;
+        relationTo: 'pages';
+        value: number | Page;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -279,17 +300,29 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "banner_select".
+ * via the `definition` "pages_select".
  */
-export interface BannerSelect<T extends boolean = true> {
+export interface PagesSelect<T extends boolean = true> {
   title?: T;
-  subtitle?: T;
-  backgroundImage?: T;
-  cta?:
+  slug?: T;
+  layout?:
     | T
     | {
-        text?: T;
-        url?: T;
+        hero?:
+          | T
+          | {
+              Heading?: T;
+              subheading?: T;
+              image?: T;
+              cta_button?:
+                | T
+                | {
+                    lable?: T;
+                    url?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;
