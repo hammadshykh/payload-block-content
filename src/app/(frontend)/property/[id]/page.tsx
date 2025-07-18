@@ -131,7 +131,7 @@ export default async function PropertyDetailsPage({ params }: { params: Promise<
       </div>
 
       {/* Property Gallery */}
-      <PropertyGallery images={property.gallery} title={property.title} />
+      <PropertyGallery images={property?.gallery} title={property.title} />
 
       <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

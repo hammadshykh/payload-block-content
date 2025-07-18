@@ -32,7 +32,10 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
         {/* Main Image */}
         <div className="relative h-full">
           <img
-            src={images[currentImage]?.url || ''}
+            src={
+              images[currentImage]?.url ||
+              'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800'
+            }
             alt={images[currentImage]?.alt || title}
             className="w-full h-full object-cover"
           />
@@ -85,7 +88,10 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
                 }`}
               >
                 <img
-                  src={image?.url || ''}
+                  src={
+                    image?.url ||
+                    'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800'
+                  }
                   alt={image?.alt}
                   className="w-full h-full object-cover"
                 />
