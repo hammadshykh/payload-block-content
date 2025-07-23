@@ -11,9 +11,9 @@ interface CardGridProps {
 }
 
 export default function CardGrid({ block }: CardGridProps) {
-  const { title, cards } = block
+  const { title, properties } = block
 
-  if (!cards || cards.length === 0) return null
+  if (!properties || properties.length === 0) return null
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
@@ -26,7 +26,7 @@ export default function CardGrid({ block }: CardGridProps) {
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {cards.map((card: any, index: number) => (
+          {properties.map((card: any, index: number) => (
             <Card
               key={index}
               className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 p-0 border-0 shadow-lg overflow-hidden bg-white"
