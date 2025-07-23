@@ -13,6 +13,8 @@ interface CardGridProps {
 export default function CardGrid({ block }: CardGridProps) {
   const { title, properties } = block
 
+  console.log(properties, 'PROPERTIES')
+
   if (!properties || properties.length === 0) return null
 
   return (
@@ -26,7 +28,7 @@ export default function CardGrid({ block }: CardGridProps) {
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {properties.map((card: any, index: number) => (
+          {properties?.map((card: any, index: number) => (
             <Card
               key={index}
               className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 p-0 border-0 shadow-lg overflow-hidden bg-white"
