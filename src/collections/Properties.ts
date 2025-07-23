@@ -107,10 +107,12 @@ export const Properties: CollectionConfig = {
       name: 'status',
       type: 'select',
       options: [
-        { label: 'For Sale', value: 'for-sale' },
-        { label: 'For Rent', value: 'for-rent' },
+        // Make sure these values EXACTLY match your PostgreSQL enum
+        { label: 'For Sale', value: 'for_sale' }, // Note underscore instead of hyphen
+        { label: 'For Rent', value: 'for_rent' },
         { label: 'Sold', value: 'sold' },
       ],
+      defaultValue: 'for_sale', // Must match one of the enum values
     },
     // Features array
     {
