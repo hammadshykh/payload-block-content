@@ -29,3 +29,5 @@ export default async function HomePage() {
     return <NotFound />
   }
 }
+
+export const dynamic = 'force-dynamic'
