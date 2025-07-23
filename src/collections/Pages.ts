@@ -110,6 +110,7 @@ export const Pages: CollectionConfig = {
               name: 'properties',
               type: 'relationship',
               relationTo: 'properties',
+              hasMany: true,
             },
             {
               name: 'layout',
