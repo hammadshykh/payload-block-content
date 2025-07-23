@@ -200,7 +200,7 @@ export interface Page {
           }
         | {
             title?: string | null;
-            properties?: (number | null) | Property;
+            properties?: (number | Property)[] | null;
             layout?: ('grid' | 'list' | 'carousel') | null;
             id?: string | null;
             blockName?: string | null;
