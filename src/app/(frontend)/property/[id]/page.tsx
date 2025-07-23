@@ -52,7 +52,7 @@ const getPropertyBySlug = async ({
       sqft: property.sqft,
       propertyType: property.propertyType,
       yearBuilt: property.yearBuilt,
-      status: property.status,
+      // status: property.status,
       features: property.features || [],
       featuredImage: {
         url: featuredImage?.url,
@@ -165,11 +165,11 @@ export default async function PropertyDetailsPage({
                       <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2">
                         {property.propertyType}
                       </Badge>
-                      <Badge variant="outline" className="px-3 py-1">
+                      {/* <Badge variant="outline" className="px-3 py-1">
                         {property.status === 'for_sale' && 'For Sale'}
                         {property.status === 'for_rent' && 'For Rent'}
                         {property.status === 'sold' && 'Sold'}
-                      </Badge>
+                      </Badge> */}
                     </div>
                     <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
                       {property.title}

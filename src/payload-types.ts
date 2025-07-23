@@ -202,7 +202,7 @@ export interface Page {
           }
         | {
             title?: string | null
-            properties?: (number | Property)[] | null
+            properties?: (number | null) | Property
             layout?: ('grid' | 'list' | 'carousel') | null
             id?: string | null
             blockName?: string | null
@@ -297,7 +297,6 @@ export interface Property {
   sqft: number
   propertyType: 'House' | 'Apartment' | 'Condo' | 'Townhouse' | 'Loft' | 'Penthouse'
   yearBuilt: number
-  status?: ('for_sale' | 'for_rent' | 'sold') | null
   features?:
     | {
         feature: string
@@ -603,7 +602,6 @@ export interface PropertiesSelect<T extends boolean = true> {
   sqft?: T
   propertyType?: T
   yearBuilt?: T
-  status?: T
   features?:
     | T
     | {

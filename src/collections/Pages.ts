@@ -110,10 +110,6 @@ export const Pages: CollectionConfig = {
               name: 'properties',
               type: 'relationship',
               relationTo: 'properties',
-              hasMany: true,
-              filterOptions: ({ id }) => ({
-                status: { equals: 'published' },
-              }),
             },
             {
               name: 'layout',
