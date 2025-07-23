@@ -166,8 +166,8 @@ export default async function PropertyDetailsPage({
                         {property.propertyType}
                       </Badge>
                       <Badge variant="outline" className="px-3 py-1">
-                        {property.status === 'for-sale' && 'For Sale'}
-                        {property.status === 'for-rent' && 'For Rent'}
+                        {property.status === 'for_sale' && 'For Sale'}
+                        {property.status === 'for_rent' && 'For Rent'}
                         {property.status === 'sold' && 'Sold'}
                       </Badge>
                     </div>
