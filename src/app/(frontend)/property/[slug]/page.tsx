@@ -11,7 +11,7 @@ import ContactAgent from '@/components/property/contact-agent'
 import SimilarProperties from '@/components/property/similar-properties'
 import { getPayload } from 'payload'
 import payloadConfig from '@/payload.config'
-import { Media, Property } from '@/payload-types'
+import { Agent, Media, Property } from '@/payload-types'
 
 const getPropertyBySlug = async ({
   params,
@@ -37,7 +37,7 @@ const getPropertyBySlug = async ({
     const featuredImage = property.featuredImage as Media
 
     return {
-      agent: property.agent,
+      agent: property.agent as Property['agent'],
       createdAt: property.createdAt,
       parking: property.parking,
       updatedAt: property.updatedAt,
@@ -123,6 +123,8 @@ export default async function PropertyDetailsPage({
     return null
   }
 
+  console.log(property, 'Property')
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Back Navigation */}
@@ -153,7 +155,7 @@ export default async function PropertyDetailsPage({
       />
 
       <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sticky top-32">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Property Header */}
@@ -259,16 +261,15 @@ export default async function PropertyDetailsPage({
             {/* Contact Agent - You'll need to implement this based on your agent data */}
             <ContactAgent
               agent={{
-                name: 'John Doe',
-                phone: '(555) 123-4567',
-                email: 'john@realestate.com',
+                name: (property.agent as Agent).name,
+                phone: (property.agent as Agent).phone,
+                email: (property.agent as Agent).email,
                 image: {
-                  url: '/agent-placeholder.jpg',
-                  alt: 'John Doe',
+                  url: '/user-image.avif',
+                  alt: (property.agent as Agent).name,
                 },
               }}
             />
-
             {/* Mortgage Calculator */}
             <Card className="border-0 shadow-lg">
               <CardHeader>

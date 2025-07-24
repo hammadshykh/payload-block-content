@@ -50,7 +50,7 @@ export default function ContactAgent({ agent }: ContactAgentProps) {
   }
 
   return (
-    <Card className="border-0 shadow-lg sticky top-32">
+    <Card className="border-0 shadow-lg">
       <CardHeader className="text-center">
         <div className="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden">
           {agent.image?.url ? (

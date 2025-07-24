@@ -76,7 +76,7 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
 
         {/* Thumbnail Strip */}
         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-          <div className="flex gap-2 overflow-x-auto scrollbar-hide">
+          <div className="flex gap-2 overflow-x-auto overflow-y-hidden scrollbar-hide">
             {images.map((image, index) => (
               <button
                 key={index}

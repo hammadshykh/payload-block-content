@@ -1,5 +1,5 @@
-import Link from 'next/link';
-import { Home, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react';
+import Link from 'next/link'
+import { Home, Mail, Phone, MapPin, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -13,7 +13,8 @@ export default function Footer() {
               <span className="text-2xl font-bold">RealEstate</span>
             </div>
             <p className="text-gray-300 mb-6">
-              Your trusted partner in finding the perfect home. We make real estate dreams come true.
+              Your trusted partner in finding the perfect home. We make real estate dreams come
+              true.
             </p>
             <div className="flex space-x-4">
               <Facebook className="w-6 h-6 text-gray-400 hover:text-blue-400 cursor-pointer transition-colors" />
@@ -43,7 +44,10 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/contact-us" className="text-gray-300 hover:text-white transition-colors">
+                <Link
+                  href="/contact-us"
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
                   Contact
                 </Link>
               </li>
@@ -88,5 +92,5 @@ export default function Footer() {
         </div>
       </div>
     </footer>
-  );
+  )
 }
