@@ -1,11 +1,9 @@
 import { Metadata } from 'next'
 import BlockRenderer from '@/components/blocks/block-renderer'
 import { Page } from '@/payload-types'
-
-export const metadata: Metadata = {
-  title: 'About Us - RealEstate',
-  description: 'Learn about our mission, values, and the dedicated team behind RealEstate.',
-}
+import NotFound from '../not-found'
+import { getPayload } from 'payload'
+import payloadConfig from '@/payload.config'
 
 const aboutUsData: Page = {
   id: 2,
@@ -94,6 +92,41 @@ const aboutUsData: Page = {
   createdAt: '2024-01-01T00:00:00Z',
 }
 
-export default function AboutUsPage() {
-  return <BlockRenderer blocks={aboutUsData.blocks} />
+export async function generateMetadata(): Promise<Metadata> {
+  const payload = await getPayload({ config: payloadConfig })
+  const { docs } = await payload.find({
+    collection: 'pages',
+    where: { slug: { equals: 'about' } },
+    limit: 1,
+  })
+
+  const aboutPage = docs[0] as Page
+
+  console.log(aboutPage, 'HOME PAGE DATA')
+
+  return {
+    title: aboutPage?.meta?.title || 'About Us - RealEstate',
+    description:
+      aboutPage?.meta?.description ||
+      'Learn about our mission, values, and the dedicated team behind RealEstate.',
+  }
+}
+
+export default async function AboutUsPage() {
+  const payload = await getPayload({ config: payloadConfig })
+  const { docs } = await payload.find({
+    collection: 'pages',
+    where: { slug: { equals: 'about' } },
+    limit: 1,
+  })
+
+  if (!docs || docs.length === 0) {
+    return <BlockRenderer blocks={aboutUsData.blocks} />
+  }
+
+  const aboutPage = docs[0] as Page
+
+  console.log(aboutPage, 'HOME PAGE DATA')
+
+  return <BlockRenderer blocks={aboutPage.blocks} />
 }
