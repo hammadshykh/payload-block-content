@@ -71,6 +71,7 @@ const getPropertyBySlug = async ({
         },
         alt: item.alt || property.title,
       })),
+      relatedProperties: property.relatedProperties,
     }
   } catch (error) {
     console.error('Error fetching property:', error)
@@ -155,7 +156,7 @@ export default async function PropertyDetailsPage({
       />
 
       <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sticky top-32">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Property Header */}
@@ -254,6 +255,9 @@ export default async function PropertyDetailsPage({
                 )}
               </CardContent>
             </Card>
+            <div>
+              <SimilarProperties relatedProperties={property.relatedProperties ?? []} />
+            </div>
           </div>
 
           {/* Sidebar */}
@@ -342,10 +346,9 @@ export default async function PropertyDetailsPage({
             </Card>
           </div>
         </div>
-        <div className="mt-16">
-          <SimilarProperties relatedProperties={property.relatedProperties ?? []} />
-        </div>
       </div>
     </div>
   )
 }
+
+export const revalidate = 1000
