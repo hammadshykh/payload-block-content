@@ -21,8 +21,6 @@ export default async function HomePage() {
 
     const homePage = docs[0] as Page
 
-    console.log(homePage, 'HOME PAGE DATA')
-
     return <BlockRenderer blocks={homePage.blocks || []} />
   } catch (error) {
     console.error('Error fetching home page:', error)
