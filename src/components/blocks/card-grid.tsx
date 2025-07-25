@@ -2,7 +2,6 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { MapPin, Bed, Bath, Square, Calendar, Heart } from 'lucide-react'
-// import { Page } from '@/payload-types'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Media } from '@/payload-types'
@@ -85,7 +84,6 @@ export default function CardGrid({ block }: CardGridProps) {
                     )}
                   </div>
 
-                  {/* Property Stats */}
                   <div className="flex items-center justify-between mb-4 text-sm text-gray-600">
                     {card.bedrooms && (
                       <div className="flex items-center">

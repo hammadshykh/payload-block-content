@@ -2,7 +2,11 @@ import { withPayload } from '@payloadcms/next/withPayload'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Your Next.js config here
+  // Your Next.js config
+  experimental: {
+    ppr: 'incremental',
+  },
+
   images: {
     domains: ['images.pexels.com'],
   },

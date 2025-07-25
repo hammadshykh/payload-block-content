@@ -4,6 +4,8 @@ import payloadConfig from '@/payload.config'
 import { getPayload } from 'payload'
 import NotFound from './not-found'
 
+export const experimental_ppr = true
+
 export default async function HomePage() {
   // In development, you might want to use mock data
 
