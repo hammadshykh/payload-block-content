@@ -12,6 +12,8 @@ export default function HeroSlider({ block }: HeroSliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const { slides } = block
 
+  console.log(slides, 'SLIDES')
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
@@ -32,7 +34,7 @@ export default function HeroSlider({ block }: HeroSliderProps) {
 
   return (
     <div className="relative h-[80vh] overflow-hidden">
-      {slides.map((slide: any, index: number) => (
+      {slides?.map((slide: any, index: number) => (
         <div
           key={index}
           className={`absolute inset-0 transition-all duration-1000 ${

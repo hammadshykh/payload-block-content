@@ -5,9 +5,6 @@ import CardGrid from './card-grid'
 import Testimonials from './testimonials'
 import ContactForm from './contact-form'
 import ServiceList from './service-list'
-import { Suspense } from 'react'
-import { CTABlockSkeleton } from '../skeletons/cta-block-skeleton'
-import { CardGridSkeleton } from '../skeletons/card-grid-skeleton'
 
 interface BlockRendererProps {
   blocks: Page['blocks']
@@ -18,20 +15,12 @@ export default function BlockRenderer({ blocks }: BlockRendererProps) {
     <div>
       {blocks?.map((block, index) => {
         switch (block.blockType) {
-          case 'hero-slider':
-            return <HeroSlider key={index} block={block} />
+          // case 'hero-slider':
+          //   return <HeroSlider key={index} block={block} />
           case 'cta-block':
-            return (
-              <Suspense fallback={<CTABlockSkeleton />}>
-                <CTABlock key={index} block={block} />
-              </Suspense>
-            )
+            return <CTABlock key={index} block={block} />
           case 'property-grid':
-            return (
-              <Suspense fallback={<CardGridSkeleton />}>
-                <CardGrid key={index} block={block} />
-              </Suspense>
-            )
+            return <CardGrid key={index} block={block} />
           case 'testimonials':
             return <Testimonials key={index} block={block} />
           case 'contact-form':

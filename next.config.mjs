@@ -4,7 +4,7 @@ import { withPayload } from '@payloadcms/next/withPayload'
 const nextConfig = {
   // Your Next.js config
   experimental: {
-    ppr: 'incremental',
+    ppr: true,
   },
 
   images: {

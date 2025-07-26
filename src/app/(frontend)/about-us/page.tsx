@@ -15,8 +15,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
   const aboutPage = docs[0] as Page
 
-  console.log(aboutPage, 'HOME PAGE DATA')
-
   return {
     title: aboutPage?.meta?.title || 'About Us - RealEstate',
     description:
@@ -38,8 +36,6 @@ export default async function AboutUsPage() {
   }
 
   const aboutPage = docs[0] as Page
-
-  console.log(aboutPage, 'HOME PAGE DATA')
 
   return <BlockRenderer blocks={aboutPage.blocks} />
 }

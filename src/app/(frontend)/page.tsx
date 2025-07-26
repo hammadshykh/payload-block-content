@@ -1,33 +1,60 @@
+import { Suspense } from 'react'
 import BlockRenderer from '@/components/blocks/block-renderer'
-import { Page } from '@/payload-types'
-import payloadConfig from '@/payload.config'
-import { getPayload } from 'payload'
 import NotFound from './not-found'
+import { CardGridSkeleton } from '@/components/skeletons/card-grid-skeleton'
+import HeroSlider from '@/components/blocks/hero-slider'
 
 export const experimental_ppr = true
 
-export default async function HomePage() {
-  // In development, you might want to use mock data
+// ✅ Fetch static CMS data at build time
+async function getStaticContent() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/static-home-blocks`)
 
-  try {
-    const payload = await getPayload({ config: payloadConfig })
-    const { docs } = await payload.find({
-      collection: 'pages',
-      where: { slug: { equals: 'home' } },
-      limit: 1,
-    })
-
-    if (!docs || docs.length === 0) {
-      return <NotFound />
-    }
-
-    const homePage = docs[0] as Page
-
-    return <BlockRenderer blocks={homePage.blocks || []} />
-  } catch (error) {
-    console.error('Error fetching home page:', error)
-    return <NotFound />
-  }
+  const data = await res.json()
+  return data
 }
 
-export const revalidate = 600
+function LoadingHomePage() {
+  return (
+    <div>
+      <CardGridSkeleton />
+    </div>
+  )
+}
+
+async function HomePageContent() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/home`, {
+    cache: 'no-store',
+  })
+
+  if (!res.ok) {
+    return <NotFound />
+  }
+
+  const homePage = await res.json()
+
+  return (
+    <div>
+      <BlockRenderer blocks={homePage.blocks || []} />
+    </div>
+  )
+}
+
+export default async function HomePage() {
+  const staticData = await getStaticContent()
+
+  if (!staticData) return <NotFound />
+
+  console.log(staticData, 'SILDER BLOCK')
+  return (
+    <>
+      {/* ✅ Static blocks (e.g., hero slider) from CMS, rendered at build time */}
+      <HeroSlider block={staticData || []} />
+
+      {/* ✅ Dynamic content (hydrated on the server at request time) */}
+      <Suspense fallback={<LoadingHomePage />}>
+        <HomePageContent />
+      </Suspense>
+    </>
+  )
+}

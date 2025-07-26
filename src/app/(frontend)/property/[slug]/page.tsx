@@ -124,8 +124,6 @@ export default async function PropertyDetailsPage({
     return null
   }
 
-  console.log(property, 'Property')
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Back Navigation */}

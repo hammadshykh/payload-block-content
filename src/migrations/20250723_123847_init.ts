@@ -1,6 +1,6 @@
 import { MigrateUpArgs, MigrateDownArgs, sql } from '@payloadcms/db-vercel-postgres'
 
-export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
+export async function up({ db }: MigrateUpArgs): Promise<void> {
   await db.execute(sql`
    CREATE TYPE "public"."enum_pages_blocks_property_grid_layout" AS ENUM('grid', 'list', 'carousel');
   CREATE TYPE "public"."enum_pages_blocks_service_list_services_icon" AS ENUM('home', 'search', 'dollar', 'users', 'file', 'key');
