@@ -254,7 +254,13 @@ export default async function PropertyDetailsPage({
               </CardContent>
             </Card>
             <div>
-              <SimilarProperties relatedProperties={property.relatedProperties ?? []} />
+              <SimilarProperties
+                relatedProperties={
+                  property.relatedProperties?.filter(
+                    (item): item is Property => typeof item === 'object' && item !== null,
+                  ) ?? []
+                }
+              />
             </div>
           </div>
 
