@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { revalidateDeletePage, revalidatePage } from './hooks/revalidatePage'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -297,5 +298,21 @@ export const Pages: CollectionConfig = {
   ],
   versions: {
     drafts: true,
+  },
+  hooks: {
+    afterChange: [revalidatePage],
+    afterDelete: [revalidateDeletePage],
+    beforeChange: [
+      async ({ data, req, operation }) => {
+        if (operation === 'create' && !data.slug) {
+          // Auto-generate slug from title if not provided
+          data.slug = data.title
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/(^-|-$)/g, '')
+        }
+        return data
+      },
+    ],
   },
 }

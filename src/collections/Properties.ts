@@ -1,4 +1,5 @@
 import type { CollectionConfig } from 'payload'
+import { revalidateDeleteProperty, revalidateProperty } from './hooks/revalidateProperty'
 
 export const Properties: CollectionConfig = {
   slug: 'properties',
@@ -251,6 +252,8 @@ export const Properties: CollectionConfig = {
     drafts: true,
   },
   hooks: {
+    afterChange: [revalidateProperty],
+    afterDelete: [revalidateDeleteProperty],
     beforeChange: [
       async ({ data, req, operation }) => {
         if (operation === 'create' && !data.slug) {
