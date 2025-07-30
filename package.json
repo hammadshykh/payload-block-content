@@ -18,6 +18,7 @@
     "test:int": "cross-env NODE_OPTIONS=--no-deprecation vitest run --config ./vitest.config.mts"
   },
   "dependencies": {
+    "@blend-metrics/icons": "^0.8.0",
     "@hookform/resolvers": "^5.1.1",
     "@payloadcms/db-postgres": "^3.47.0",
     "@payloadcms/db-vercel-postgres": "^3.47.0",
@@ -57,6 +58,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
+    "cookies-next": "^6.1.0",
     "cross-env": "^7.0.3",
     "date-fns": "^4.1.0",
     "dotenv": "16.4.7",
@@ -72,13 +74,15 @@
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.60.0",
     "react-resizable-panels": "^3.0.3",
+    "react-use": "^17.6.0",
     "recharts": "^2.15.4",
     "sharp": "0.34.2",
     "sonner": "^2.0.6",
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",
     "vaul": "^1.1.2",
-    "zod": "^4.0.5"
+    "zod": "^4.0.5",
+    "zustand": "^5.0.6"
   },
   "devDependencies": {
     "@playwright/test": "1.50.0",

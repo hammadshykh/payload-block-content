@@ -1,19 +1,20 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { Menu, X, Home } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { useState } from 'react'
+import Link from 'next/link'
+import { Menu, X, Home } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { LanguagePopover } from '@/components/language/language-popover'
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About Us', href: '/about-us' },
     { name: 'Services', href: '/services' },
     { name: 'Contact', href: '/contact-us' },
-  ];
+  ]
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
@@ -35,16 +36,17 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-              Get Started
-            </Button>
+
+            {/* Language Selector */}
+            <div className="ml-4">
+              <LanguagePopover />
+            </div>
+
+            <Button className="bg-blue-600 hover:bg-blue-700 text-white">Get Started</Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2"
-          >
+          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden p-2">
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -62,6 +64,12 @@ export default function Header() {
                 {item.name}
               </Link>
             ))}
+
+            {/* Mobile Language Selector */}
+            <div className="mt-4">
+              <LanguagePopover />
+            </div>
+
             <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white">
               Get Started
             </Button>
@@ -69,5 +77,5 @@ export default function Header() {
         )}
       </nav>
     </header>
-  );
+  )
 }

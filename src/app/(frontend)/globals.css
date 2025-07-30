@@ -111,10 +111,24 @@
 }
 
 @layer base {
+  .skiptranslate {
+    @apply !hidden !fixed !bottom-2.5 !right-2.5 !z-0;
+  }
+
+  .goog-te-banner-frame.skiptranslate {
+    @apply !hidden;
+  }
+
+  .VIpgJd-yAWNEb-VIpgJd-fmcmS-sn54Q {
+    @apply !bg-transparent !shadow-none !static;
+  }
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+    .skiptranslate {
+      @apply !hidden;
+    }
   }
 }
