@@ -1,9 +1,9 @@
 import localFont from 'next/font/local'
 import './globals.css'
 
-import Header from '@/components/layout/header'
-import Footer from '@/components/layout/footer'
 import { RefreshRouteOnSave } from '@/lib/RefreshRouteOnSave'
+import { Header } from '@/globals/Header/Component'
+import { Footer } from '@/globals/Footer/Component'
 
 const satoshi = localFont({
   src: [

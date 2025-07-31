@@ -13,6 +13,8 @@ import { Media } from './collections/Media'
 import { Properties } from './collections/Properties'
 import { Agents } from './collections/Agents'
 import { Pages } from './collections/Pages'
+import { Header } from './globals/Header/config'
+import { Footer } from './globals/Footer/config'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -35,7 +37,7 @@ export default buildConfig({
       connectionString: process.env.POSTGRES_URL || '',
     },
   }),
-
+  globals: [Header, Footer],
   sharp,
   plugins: [
     payloadCloudPlugin(),
