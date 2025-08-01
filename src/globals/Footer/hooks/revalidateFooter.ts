@@ -7,6 +7,7 @@ export const revalidateFooter: GlobalAfterChangeHook = ({ doc, req: { payload, c
     payload.logger.info(`Revalidating footer`)
 
     revalidateTag('global_footer')
+    revalidateTag('layout') // Common tag for all pages
   }
 
   return doc
