@@ -7,8 +7,18 @@ export const revalidateHeader: GlobalAfterChangeHook = ({ doc, req: { payload, c
     payload.logger.info(`Revalidating header`)
 
     revalidateTag('global_header')
-    revalidateTag('layout') // Common tag for all pages
-    revalidatePath('/')
+    // Strategy 1: Revalidate all possible paths that use header
+    const pathsToRevalidate = [
+      '/',
+      '/about',
+      '/services',
+      '/contact',
+      '/property', // Base property path
+    ]
+
+    pathsToRevalidate.forEach((path) => {
+      revalidatePath(path)
+    })
   }
 
   return doc

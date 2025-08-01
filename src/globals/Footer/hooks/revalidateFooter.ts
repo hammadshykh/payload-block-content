@@ -8,7 +8,17 @@ export const revalidateFooter: GlobalAfterChangeHook = ({ doc, req: { payload, c
 
     revalidateTag('global_footer')
     revalidateTag('layout') // Common tag for all pages
-    revalidatePath('/')
+    const pathsToRevalidate = [
+      '/',
+      '/about',
+      '/services',
+      '/contact',
+      '/property', // Base property path
+    ]
+
+    pathsToRevalidate.forEach((path) => {
+      revalidatePath(path)
+    })
   }
 
   return doc
