@@ -24,6 +24,9 @@ const googleTranslateElementInit = () => {
 
   const includedLanguages = languages.map((language) => language.value.slice(6)).join(',')
 
+  const hiddenDiv = document.createElement('div')
+  hiddenDiv.style.display = 'none' // Bilkul chhup jata hai
+
   new window.google.translate.TranslateElement(
     {
       pageLanguage: 'auto',
@@ -32,7 +35,7 @@ const googleTranslateElementInit = () => {
       layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
       gaTrack: false,
     },
-    ELEMENT_ID,
+    'hidden-div',
   )
 }
 
