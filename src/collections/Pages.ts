@@ -1,5 +1,12 @@
 import type { CollectionConfig } from 'payload'
 import { revalidateDeletePage, revalidatePage } from './hooks/revalidatePage'
+import {
+  MetaDescriptionField,
+  MetaImageField,
+  MetaTitleField,
+  OverviewField,
+  PreviewField,
+} from '@payloadcms/plugin-seo/fields'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -245,35 +252,40 @@ export const Pages: CollectionConfig = {
       name: 'meta',
       type: 'group',
       fields: [
-        {
-          name: 'title',
-          type: 'text',
-          admin: {
-            description: 'SEO title (leave blank to use page title)',
-          },
-        },
-        {
-          name: 'description',
-          type: 'textarea',
-          admin: {
-            description: 'SEO description for search engines',
-          },
-        },
-        {
-          name: 'keywords',
-          type: 'text',
-          admin: {
-            description: 'SEO keywords (comma separated)',
-          },
-        },
-        {
-          name: 'image',
-          type: 'upload',
+        // Used as fields
+
+        MetaTitleField({
+          // if the `generateTitle` function is configured
+          hasGenerateFn: true,
+        }),
+
+        MetaDescriptionField({
+          // if the `generateDescription` function is configured
+          hasGenerateFn: true,
+        }),
+
+        MetaImageField({
+          // the upload collection slug
           relationTo: 'media',
-          admin: {
-            description: 'Social media sharing image',
-          },
-        },
+
+          // if the `generateImage` function is configured
+          hasGenerateFn: true,
+        }),
+        PreviewField({
+          // if the `generateUrl` function is configured
+          hasGenerateFn: true,
+
+          // field paths to match the target field for data
+          titlePath: 'meta.title',
+          descriptionPath: 'meta.description',
+        }),
+
+        OverviewField({
+          // field paths to match the target field for data
+          titlePath: 'meta.title',
+          descriptionPath: 'meta.description',
+          imagePath: 'meta.image',
+        }),
       ],
     },
     // Page Status

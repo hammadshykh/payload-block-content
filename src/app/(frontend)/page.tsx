@@ -26,6 +26,8 @@ async function HomePageContent() {
 
   const homePage = await res.json()
 
+  console.log(homePage)
+
   return (
     <div>
       <BlockRenderer blocks={homePage.blocks || []} />

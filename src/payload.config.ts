@@ -1,6 +1,7 @@
 // storage-adapter-import-placeholder
 import { vercelPostgresAdapter } from '@payloadcms/db-vercel-postgres'
 import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
+import { seoPlugin } from '@payloadcms/plugin-seo'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import path from 'path'
 import { uploadthingStorage } from '@payloadcms/storage-uploadthing'
@@ -40,6 +41,11 @@ export default buildConfig({
   globals: [Header, Footer],
   sharp,
   plugins: [
+    seoPlugin({
+      uploadsCollection: 'media',
+      generateTitle: ({ doc }) => `Payload-Content — ${doc.title}`,
+      generateDescription: ({ doc }) => doc.excerpt,
+    }),
     payloadCloudPlugin(),
     uploadthingStorage({
       collections: {

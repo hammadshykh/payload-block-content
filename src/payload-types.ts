@@ -249,20 +249,10 @@ export interface Page {
       )[]
     | null;
   meta?: {
-    /**
-     * SEO title (leave blank to use page title)
-     */
     title?: string | null;
-    /**
-     * SEO description for search engines
-     */
     description?: string | null;
     /**
-     * SEO keywords (comma separated)
-     */
-    keywords?: string | null;
-    /**
-     * Social media sharing image
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
      */
     image?: (number | null) | Media;
   };
@@ -563,7 +553,6 @@ export interface PagesSelect<T extends boolean = true> {
     | {
         title?: T;
         description?: T;
-        keywords?: T;
         image?: T;
       };
   status?: T;
