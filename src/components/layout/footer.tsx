@@ -88,7 +88,7 @@ export default function FooterClient({ footerData }: { footerData: Footer }) {
           </div>
         </div>
 
-        <div className="border-t border-white mt-8 pt-8 text-center">
+        <div className="border-t text-gray-500 mt-8 pt-8 text-center">
           <p className="text-gray-400">{footerData.copyright}</p>
         </div>
       </div>
