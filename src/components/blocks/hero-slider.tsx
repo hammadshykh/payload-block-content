@@ -64,7 +64,7 @@ export default function HeroSlider({ block }: HeroSliderProps) {
               {slide.buttonText && slide.buttonLink && (
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-12 py-6 text-lg font-semibold rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 animate-fade-in-delay-2"
+                  className=" bg-[#ccf081] text-black  hover:to-[#9dd12d]  px-12 py-6 text-lg font-semibold rounded-full shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 animate-fade-in-delay-2"
                   asChild
                 >
                   <a href={slide.buttonLink}>{slide.buttonText}</a>
@@ -79,13 +79,13 @@ export default function HeroSlider({ block }: HeroSliderProps) {
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+            className="absolute left-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
           >
             <ChevronLeft size={28} />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
+            className="absolute right-6 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-all duration-300 hover:scale-110"
           >
             <ChevronRight size={28} />
           </button>
@@ -95,7 +95,7 @@ export default function HeroSlider({ block }: HeroSliderProps) {
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-4 h-4 rounded-full transition-all duration-300 ${
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                   index === currentSlide ? 'bg-white scale-125' : 'bg-white/50 hover:bg-white/75'
                 }`}
               />

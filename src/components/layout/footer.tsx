@@ -4,13 +4,13 @@ import type { Footer } from '@/payload-types'
 
 export default function FooterClient({ footerData }: { footerData: Footer }) {
   return (
-    <footer className="bg-gray-900 text-white">
+    <footer className="bg-green-950 text-white">
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <Home className="w-8 h-8 text-blue-400" />
+              <Home className="w-8 h-8 text-primary-green-light" />
               <span className="text-2xl font-bold">{footerData.companyInfo.logo.text}</span>
             </div>
             <p className="text-gray-300 mb-6">{footerData.companyInfo.description}</p>
@@ -73,22 +73,22 @@ export default function FooterClient({ footerData }: { footerData: Footer }) {
             <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-blue-400" />
+                <MapPin className="w-5 h-5 text-primary-green-light" />
                 <span className="text-gray-300">{footerData.contactInfo.address}</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-blue-400" />
+                <Phone className="w-5 h-5 text-primary-green-light" />
                 <span className="text-gray-300">{footerData.contactInfo.phone}</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-blue-400" />
+                <Mail className="w-5 h-5 text-primary-green-light" />
                 <span className="text-gray-300">{footerData.contactInfo.email}</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center">
+        <div className="border-t border-white mt-8 pt-8 text-center">
           <p className="text-gray-400">{footerData.copyright}</p>
         </div>
       </div>

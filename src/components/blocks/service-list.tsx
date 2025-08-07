@@ -41,8 +41,8 @@ export default function ServiceList({ block }: ServiceListProps) {
                 className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
                 <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-blue-600 transition-colors">
-                    <IconComponent className="w-8 h-8 text-blue-600 group-hover:text-white transition-colors" />
+                  <div className="w-16 h-16 bg-primary-green-light rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-[#ccf081] transition-colors">
+                    <IconComponent className="w-8 h-8 text-primary-green  transition-colors" />
                   </div>
 
                   <h3 className="text-xl font-semibold mb-3 text-gray-900">{service.title}</h3>

@@ -17,7 +17,7 @@ export default function HeaderClient({ header }: { header: Header }) {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Home className="w-8 h-8 text-blue-600" />
+            <Home className="w-8 h-8 text-green-800" />
             <span className="text-2xl font-bold text-gray-900">{header.logo.text}</span>
           </Link>
           {header.logo && header.logo.icon && header.logo.text && (
@@ -40,7 +40,7 @@ export default function HeaderClient({ header }: { header: Header }) {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+                className="text-gray-700 hover:text-green-600 transition-colors font-medium"
               >
                 {item.label}
               </Link>
@@ -52,7 +52,7 @@ export default function HeaderClient({ header }: { header: Header }) {
             </div>
 
             {/* CTA Button */}
-            <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white">
+            <Button asChild className="bg-[#0e5343] hover:bg-green-900 text-white">
               <Link href={header.ctaButton.url}>{header.ctaButton.text}</Link>
             </Button>
           </div>
