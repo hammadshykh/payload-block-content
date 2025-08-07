@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     'real estate agents',
   ],
   icons: {
-    icon: { url: '/favicon-for-real-estate.png' },
+    icon: { url: '/find.png' },
   },
   openGraph: {
     title: 'Prime Properties | Luxury Real Estate & Dream Homes',
