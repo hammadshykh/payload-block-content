@@ -69,7 +69,7 @@ export default function CardGrid({ block }: CardGridProps) {
             className="text-center mb-16"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{title}</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-gradient-to-r from-primary-green-light to-primary-green mx-auto rounded-full"></div>
           </motion.div>
         )}
 

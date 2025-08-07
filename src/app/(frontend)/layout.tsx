@@ -4,6 +4,7 @@ import './globals.css'
 import { RefreshRouteOnSave } from '@/lib/RefreshRouteOnSave'
 import { Header } from '@/globals/Header/Component'
 import { Footer } from '@/globals/Footer/Component'
+import { Metadata } from 'next'
 
 const satoshi = localFont({
   src: [
@@ -25,9 +26,12 @@ const satoshi = localFont({
   ],
 })
 
-export const metadata = {
+export const metadata: Metadata = {
   description: 'A blank template using Payload in a Next.js app.',
   title: 'Payload Blank Template',
+  icons: {
+    icon: { url: '/favicon-for-real-estate.png' },
+  },
 }
 
 export default function RootLayout({

@@ -84,7 +84,7 @@ export default function ContactAgent({ agent }: ContactAgentProps) {
           </Button>
           <Button
             variant="outline"
-            className="flex items-center gap-2 hover:bg-blue-50 hover:text-blue-600 hover:border-blue-300"
+            className="flex items-center gap-2 hover:bg-blue-50 hover:text-primary-green hover:border-blue-300"
             asChild
           >
             <a href={`mailto:${agent.email}`}>
@@ -137,7 +137,7 @@ export default function ContactAgent({ agent }: ContactAgentProps) {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white"
+            className="w-full bg-gradient-to-r bg-primary-green text-white"
           >
             {isSubmitting ? (
               'Sending...'

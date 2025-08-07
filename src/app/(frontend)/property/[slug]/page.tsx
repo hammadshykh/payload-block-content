@@ -133,7 +133,7 @@ export default async function PropertyDetailsPage({
       <div className="bg-white shadow-sm sticky top-16 z-40">
         <div className="max-w-7xl mx-auto px-6 py-4">
           <Button variant="ghost" asChild className="text-gray-600 hover:text-gray-900">
-            <Link href="/properties" className="flex items-center">
+            <Link href="/" className="flex items-center">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Properties
             </Link>
@@ -166,7 +166,7 @@ export default async function PropertyDetailsPage({
                 <div className="flex justify-between items-start mb-6">
                   <div>
                     <div className="flex items-center gap-3 mb-4">
-                      <Badge className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2">
+                      <Badge className="bg-primary-green text-white px-4 py-2">
                         {property.propertyType}
                       </Badge>
                       {/* <Badge variant="outline" className="px-3 py-1">
@@ -179,10 +179,10 @@ export default async function PropertyDetailsPage({
                       {property.title}
                     </h1>
                     <div className="flex items-center text-gray-600 mb-4">
-                      <MapPin className="w-5 h-5 mr-2 text-blue-500" />
+                      <MapPin className="w-5 h-5 mr-2 text-primary-green-light" />
                       <span className="text-lg">{property.location}</span>
                     </div>
-                    <div className="text-4xl font-bold text-blue-600">{property.price}</div>
+                    <div className="text-4xl font-bold text-primary-green">{property.price}</div>
                   </div>
 
                   <div className="flex gap-2">
@@ -206,24 +206,24 @@ export default async function PropertyDetailsPage({
                 {/* Property Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                   <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <Bed className="w-8 h-8 text-blue-500 mx-auto mb-2" />
+                    <Bed className="w-8 h-8 text-primary-green mx-auto mb-2" />
                     <div className="text-2xl font-bold text-gray-900">{property.bedrooms}</div>
                     <div className="text-sm text-gray-600">Bedrooms</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <Bath className="w-8 h-8 text-blue-500 mx-auto mb-2" />
+                    <Bath className="w-8 h-8 text-primary-green mx-auto mb-2" />
                     <div className="text-2xl font-bold text-gray-900">{property.bathrooms}</div>
                     <div className="text-sm text-gray-600">Bathrooms</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <Square className="w-8 h-8 text-blue-500 mx-auto mb-2" />
+                    <Square className="w-8 h-8 text-primary-green mx-auto mb-2" />
                     <div className="text-2xl font-bold text-gray-900">
                       {property.sqft.toLocaleString()}
                     </div>
                     <div className="text-sm text-gray-600">Sq Ft</div>
                   </div>
                   <div className="text-center p-4 bg-gray-50 rounded-lg">
-                    <Calendar className="w-8 h-8 text-blue-500 mx-auto mb-2" />
+                    <Calendar className="w-8 h-8 text-primary-green mx-auto mb-2" />
                     <div className="text-2xl font-bold text-gray-900">{property.yearBuilt}</div>
                     <div className="text-sm text-gray-600">Year Built</div>
                   </div>
@@ -246,7 +246,7 @@ export default async function PropertyDetailsPage({
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                         {property?.features?.map(({ feature }, index) => (
                           <div key={index} className="flex items-center p-3 bg-gray-50 rounded-lg">
-                            <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                            <div className="w-2 h-2 bg-primary-green rounded-full mr-3"></div>
                             <span className="text-gray-700 font-medium">{feature}</span>
                           </div>
                         ))}
@@ -323,14 +323,12 @@ export default async function PropertyDetailsPage({
                   <div className="pt-4 border-t">
                     <div className="flex justify-between items-center">
                       <span className="font-medium">Est. Monthly Payment</span>
-                      <span className="text-xl font-bold text-blue-600">
+                      <span className="text-xl font-bold text-primary-green">
                         ${monthlyPayment.toLocaleString()}
                       </span>
                     </div>
                   </div>
-                  <Button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
-                    Get Pre-Approved
-                  </Button>
+                  <Button className="w-full bg-primary-green-light">Get Pre-Approved</Button>
                 </div>
               </CardContent>
             </Card>
@@ -339,7 +337,7 @@ export default async function PropertyDetailsPage({
             <Card className="border-0 shadow-lg">
               <CardContent className="p-6">
                 <div className="space-y-3">
-                  <Button className="w-full bg-green-600 hover:bg-green-700 text-white">
+                  <Button className="w-full bg-green-800 hover:bg-green-700 text-white">
                     Schedule Tour
                   </Button>
                   <Button variant="outline" className="w-full">

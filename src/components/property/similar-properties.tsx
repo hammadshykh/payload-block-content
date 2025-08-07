@@ -69,11 +69,8 @@ export default function SimilarProperties({ relatedProperties }: SimilarProperti
                     <div className="relative h-64 overflow-hidden">
                       <Image
                         fill
-                        src={
-                          propertyImage?.url ||
-                          'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800'
-                        }
-                        alt={propertyImage?.alt || card.title}
+                        src={propertyImage?.url || ''}
+                        alt={propertyImage?.url || card.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -84,7 +81,7 @@ export default function SimilarProperties({ relatedProperties }: SimilarProperti
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ delay: 0.2 }}
                         >
-                          <Badge className="absolute top-4 left-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 text-sm font-bold shadow-lg">
+                          <Badge className="absolute top-4 left-4 bg-primary-green-light  text-black px-4 py-2 text-sm font-bold shadow-lg">
                             {card.price}
                           </Badge>
                         </motion.div>
@@ -116,7 +113,7 @@ export default function SimilarProperties({ relatedProperties }: SimilarProperti
                     </div>
                   </CardHeader>
 
-                  <CardContent className="px-6 pb-20">
+                  <CardContent className="px-6 pt-4 pb-20">
                     {' '}
                     {/* Extra padding for fixed button */}
                     <div className="mb-3">
@@ -124,7 +121,7 @@ export default function SimilarProperties({ relatedProperties }: SimilarProperti
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.1 }}
-                        className="text-xl font-bold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2"
+                        className="text-xl font-bold mb-2 text-gray-900 group-hover:text-primary-green transition-colors line-clamp-2"
                       >
                         {card.title}
                       </motion.h3>
@@ -136,7 +133,7 @@ export default function SimilarProperties({ relatedProperties }: SimilarProperti
                           transition={{ delay: 0.15 }}
                           className="flex items-center text-gray-500 mb-4"
                         >
-                          <MapPin size={16} className="mr-2 text-blue-500" />
+                          <MapPin size={16} className="mr-2 text-primary-green-light" />
                           <span className="text-sm font-medium">{card.location}</span>
                         </motion.div>
                       )}
@@ -149,19 +146,19 @@ export default function SimilarProperties({ relatedProperties }: SimilarProperti
                     >
                       {card.bedrooms && (
                         <div className="flex items-center">
-                          <Bed size={16} className="mr-1 text-blue-500" />
+                          <Bed size={16} className="mr-1 text-primary-green" />
                           <span className="font-medium">{card.bedrooms} bed</span>
                         </div>
                       )}
                       {card.bathrooms && (
                         <div className="flex items-center">
-                          <Bath size={16} className="mr-1 text-blue-500" />
+                          <Bath size={16} className="mr-1 text-primary-green" />
                           <span className="font-medium">{card.bathrooms} bath</span>
                         </div>
                       )}
                       {card.sqft && (
                         <div className="flex items-center">
-                          <Square size={16} className="mr-1 text-blue-500" />
+                          <Square size={16} className="mr-1 text-primary-green" />
                           <span className="font-medium">{card.sqft.toLocaleString()} sqft</span>
                         </div>
                       )}
@@ -199,7 +196,7 @@ export default function SimilarProperties({ relatedProperties }: SimilarProperti
                     className="w-full"
                   >
                     <Button
-                      className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                      className="w-full bg-primary-green hover:opacity-85 text-white font-semibold py-3 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                       asChild
                     >
                       <Link href={`/property/${card.slug || index + 1}`}>View Details</Link>
