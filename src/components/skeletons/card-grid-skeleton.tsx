@@ -4,7 +4,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 export function CardGridSkeleton() {
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4">
         <div className="text-center mb-16">
           <Skeleton className="h-10 w-64 mx-auto mb-4" />
           <Skeleton className="w-24 h-1 mx-auto" />

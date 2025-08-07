@@ -13,7 +13,7 @@ export default function HeaderClient({ header }: { header: Header }) {
 
   return (
     <header className="bg-white shadow-sm sticky top-0 z-50">
-      <nav className="max-w-7xl mx-auto px-6">
+      <nav className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
@@ -87,7 +87,7 @@ export default function HeaderClient({ header }: { header: Header }) {
             </div>
 
             {/* Mobile CTA Button */}
-            <Button asChild className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white">
+            <Button asChild className="w-full mt-4 bg-primary-green text-white">
               <Link href={header.ctaButton.url}>{header.ctaButton.text}</Link>
             </Button>
           </div>

@@ -3,6 +3,7 @@ export interface Language {
   value: string
   country: string
   flag: string
+  rtl?: boolean // Added RTL support for languages like Arabic
 }
 
 type Languages = Language[]
@@ -15,15 +16,15 @@ export const languages: Languages = [
     flag: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/US.svg',
   },
   {
+    label: 'Español',
+    value: '/auto/es',
+    country: 'Spain',
+    flag: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg',
+  },
+  {
     label: 'Deutsch',
     value: '/auto/de',
     country: 'Germany',
     flag: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/DE.svg',
   },
-  // {
-  //   label: 'العربية',
-  //   value: '/auto/ar',
-  //   country: 'Saudi Arabia',
-  //   flag: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/SA.svg',
-  // },
 ]

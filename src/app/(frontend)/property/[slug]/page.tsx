@@ -131,7 +131,7 @@ export default async function PropertyDetailsPage({
     <div className="min-h-screen bg-gray-50">
       {/* Back Navigation */}
       <div className="bg-white shadow-sm sticky top-16 z-40">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="max-w-7xl mx-auto px-4 py-4">
           <Button variant="ghost" asChild className="text-gray-600 hover:text-gray-900">
             <Link href="/" className="flex items-center">
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -156,7 +156,7 @@ export default async function PropertyDetailsPage({
         title={property.title}
       />
 
-      <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
