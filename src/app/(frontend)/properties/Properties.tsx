@@ -1,68 +1,120 @@
 'use client'
-
-import { Button } from '@/components/ui/button'
+import { PropertyFilters } from '@/components/property/PropertyFilters'
+import { PropertiesHeader } from '@/components/property/PropertyHeade'
+import { useState, useMemo } from 'react'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { MapPin, Bed, Bath, Square, Calendar, Heart } from 'lucide-react'
-import Link from 'next/link'
+import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { Media, Property } from '@/payload-types'
-import { motion } from 'framer-motion'
+import { Badge } from '@/components/ui/badge'
+import { Bath, Bed, Calendar, Heart, MapPin, Square } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+// Mock data for properties
 
-interface CardGridProps {
-  block: {
-    title?: string
-    properties: Property[]
+export const PropertiesClient = ({ properties }: { properties: Property[] }) => {
+  const [filters, setFilters] = useState({
+    search: '',
+    type: 'all',
+    priceRange: 'all',
+    location: 'all',
+  })
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const [sortBy, setSortBy] = useState('newest')
+
+  // Filter and sort properties
+  const filteredProperties = useMemo(() => {
+    const filtered = properties?.filter((property) => {
+      const matchesSearch =
+        property.title.toLowerCase().includes(filters.search.toLowerCase()) ||
+        property.location.toLowerCase().includes(filters.search.toLowerCase())
+      const matchesType = filters.type === 'all' || property.propertyType === filters.type
+      const matchesLocation =
+        filters.location === 'all' ||
+        property.location.toLowerCase().includes(filters.location.replace('-', ' '))
+
+      // Simple price range filtering (you'd implement proper logic here)
+      let matchesPrice = true
+      if (filters.priceRange !== 'all') {
+        const price = parseInt(property.price.replace(/[$,]/g, ''))
+        if (filters.priceRange === '0-500000') matchesPrice = price <= 500000
+        else if (filters.priceRange === '500000-1000000')
+          matchesPrice = price > 500000 && price <= 1000000
+        else if (filters.priceRange === '1000000-2000000')
+          matchesPrice = price > 1000000 && price <= 2000000
+        else if (filters.priceRange === '2000000+') matchesPrice = price > 2000000
+      }
+
+      return matchesSearch && matchesType && matchesLocation && matchesPrice
+    })
+
+    // Sort properties
+    if (sortBy === 'price-low') {
+      filtered.sort(
+        (a, b) => parseInt(a.price.replace(/[$,]/g, '')) - parseInt(b.price.replace(/[$,]/g, '')),
+      )
+    } else if (sortBy === 'price-high') {
+      filtered.sort(
+        (a, b) => parseInt(b.price.replace(/[$,]/g, '')) - parseInt(a.price.replace(/[$,]/g, '')),
+      )
+    } else if (sortBy === 'size') {
+      filtered.sort(
+        (a, b) =>
+          parseInt(b.sqft.toString().replace(/[,]/g, '')) -
+          parseInt(a.sqft.toString().replace(/[,]/g, '')),
+      )
+    }
+
+    return filtered
+  }, [filters, sortBy])
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.4,
+        ease: 'easeOut',
+      },
+    },
   }
-}
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.4,
-      ease: 'easeOut',
+  const hoverVariants = {
+    hover: {
+      y: -10,
+      boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+      transition: {
+        duration: 0.3,
+        ease: 'easeOut',
+      },
     },
-  },
-}
-
-const hoverVariants = {
-  hover: {
-    y: 0,
-    boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-    transition: {
-      duration: 0.3,
-      ease: 'easeOut',
-    },
-  },
-}
-
-export default function CardGrid({ block }: CardGridProps) {
-  const { title, properties } = block
+  }
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
-        {title && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">{title}</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-primary-green-light to-primary-green mx-auto rounded-full"></div>
-          </motion.div>
-        )}
+    <div className="min-h-screen">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <PropertiesHeader
+          totalResults={filteredProperties.length}
+          viewMode={viewMode}
+          onViewModeChange={setViewMode}
+          onSortChange={setSortBy}
+        />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {properties.map((card, index) => {
-            const image = card?.featuredImage as Media
+        <PropertyFilters
+          onSearchChange={(search) => setFilters((prev) => ({ ...prev, search }))}
+          onTypeChange={(type) => setFilters((prev) => ({ ...prev, type }))}
+          onPriceRangeChange={(priceRange) => setFilters((prev) => ({ ...prev, priceRange }))}
+          onLocationChange={(location) => setFilters((prev) => ({ ...prev, location }))}
+        />
 
-            console.log(card, 'C')
-
+        <div
+          className={`grid gap-6 ${
+            viewMode === 'grid' ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' : 'grid-cols-1'
+          }`}
+        >
+          {filteredProperties.map((card, index) => {
+            const propertyImage = card?.featuredImage as Media
             return (
               <motion.div
                 key={index}
@@ -79,8 +131,8 @@ export default function CardGrid({ block }: CardGridProps) {
                       <div className="relative h-64 overflow-hidden">
                         <Image
                           fill
-                          src={image?.url || ''}
-                          alt={image?.alt || card.title}
+                          src={propertyImage?.url || ''}
+                          alt={propertyImage?.url || card.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -218,7 +270,18 @@ export default function CardGrid({ block }: CardGridProps) {
             )
           })}
         </div>
-      </div>
-    </section>
+
+        {filteredProperties.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-luxe-gray text-lg">No properties found matching your criteria.</p>
+            <p className="text-sm text-luxe-gray mt-2">
+              Try adjusting your filters to see more results.
+            </p>
+          </div>
+        )}
+      </main>
+    </div>
   )
 }
+
+export default PropertiesClient
