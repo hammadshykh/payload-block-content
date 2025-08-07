@@ -42,6 +42,8 @@ const hoverVariants = {
 export default function CardGrid({ block }: CardGridProps) {
   const { title, properties } = block
 
+  if (!properties) return null
+
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
