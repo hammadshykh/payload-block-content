@@ -117,7 +117,7 @@ export default function ContactForm({ block }: ContactFormProps) {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  className="w-full bg-primary-green hover:opacity-85 text-white"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
                 </Button>
@@ -129,8 +129,8 @@ export default function ContactForm({ block }: ContactFormProps) {
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-primary-green-light rounded-lg flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-primary-green" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Email Us</h3>
@@ -143,8 +143,8 @@ export default function ContactForm({ block }: ContactFormProps) {
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-primary-green-light rounded-lg flex items-center justify-center">
+                    <Phone className="w-6 h-6 text-primary-green" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Call Us</h3>
@@ -157,8 +157,8 @@ export default function ContactForm({ block }: ContactFormProps) {
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-start space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-primary-green-light rounded-lg flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-primary-green" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Visit Us</h3>

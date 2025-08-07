@@ -21,10 +21,10 @@ export const languages: Languages = [
     country: 'Spain',
     flag: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/ES.svg',
   },
-  {
-    label: 'Deutsch',
-    value: '/auto/de',
-    country: 'Germany',
-    flag: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/DE.svg',
-  },
+  // {
+  //   label: 'Deutsch',
+  //   value: '/auto/de',
+  //   country: 'Germany',
+  //   flag: 'http://purecatamphetamine.github.io/country-flag-icons/3x2/DE.svg',
+  // },
 ]

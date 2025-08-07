@@ -356,4 +356,3 @@ export default async function PropertyDetailsPage({
   )
 }
 
-export const revalidate = 1000

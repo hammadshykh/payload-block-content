@@ -4,7 +4,7 @@ import type { Footer } from '@/payload-types'
 
 export default function FooterClient({ footerData }: { footerData: Footer }) {
   return (
-    <footer className="bg-green-950 text-white">
+    <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
@@ -88,7 +88,7 @@ export default function FooterClient({ footerData }: { footerData: Footer }) {
           </div>
         </div>
 
-        <div className="border-t border-gray-200 text-gray-200 mt-8 pt-8 text-center">
+        <div className="text-gray-200 mt-8 pt-8 text-center">
           <p className="text-gray-300">{footerData.copyright}</p>
         </div>
       </div>

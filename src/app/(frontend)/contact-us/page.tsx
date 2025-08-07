@@ -39,5 +39,3 @@ export default async function ContactUsPage() {
 
   return <BlockRenderer blocks={contactPage.blocks} />
 }
-
-export const revalidate = 600

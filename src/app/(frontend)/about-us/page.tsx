@@ -39,5 +39,3 @@ export default async function AboutUsPage() {
 
   return <BlockRenderer blocks={aboutPage.blocks} />
 }
-
-export const revalidate = 600

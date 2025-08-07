@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import { motion } from 'framer-motion'
 
 interface HeroSliderProps {
   block: any
@@ -41,12 +42,26 @@ export default function HeroSlider({ block }: HeroSliderProps) {
             index === currentSlide ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <div
+          <motion.div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: slide.image?.url
                 ? `url(${slide.image.url})`
-                : 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                : 'linear-gradient(135deg, #38b2ac 0%, #319795 50%, #2c7a7b 100%)',
+            }}
+            animate={{
+              backgroundImage: slide.image?.url
+                ? `url(${slide.image.url})`
+                : [
+                    'linear-gradient(135deg, #38b2ac 0%, #319795 50%, #2c7a7b 100%)',
+                    'linear-gradient(135deg, #48bb78 0%, #38a169 50%, #2f855a 100%)',
+                    'linear-gradient(135deg, #38b2ac 0%, #319795 50%, #2c7a7b 100%)',
+                  ],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              repeatType: 'reverse',
             }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60" />
