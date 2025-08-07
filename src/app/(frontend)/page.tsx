@@ -3,8 +3,6 @@ import { Suspense } from 'react'
 import BlockRenderer from '@/components/blocks/block-renderer'
 import NotFound from './not-found'
 import { CardGridSkeleton } from '@/components/skeletons/card-grid-skeleton'
-import HeroSliderServer from '@/components/blocks/HeroSliderServer'
-
 export const experimental_ppr = true
 
 function LoadingHomePage() {
@@ -39,7 +37,6 @@ export default function HomePage() {
   return (
     <>
       {/* ✅ Now fetch inside this component, not directly in page.tsx */}
-      <HeroSliderServer />
 
       <Suspense fallback={<LoadingHomePage />}>
         <HomePageContent />

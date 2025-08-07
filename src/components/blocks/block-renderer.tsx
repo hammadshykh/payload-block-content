@@ -15,12 +15,12 @@ export default function BlockRenderer({ blocks }: BlockRendererProps) {
     <div>
       {blocks?.map((block, index) => {
         switch (block.blockType) {
-          // case 'hero-slider':
-          //   return <HeroSlider key={index} block={block} />
+          case 'hero-slider':
+            return <HeroSlider key={index} block={block} />
           case 'cta-block':
             return <CTABlock key={index} block={block} />
           case 'property-grid':
-            return <CardGrid key={index} block={block} />
+            return <CardGrid key={index} block={block as any} />
           case 'testimonials':
             return <Testimonials key={index} block={block} />
           case 'contact-form':

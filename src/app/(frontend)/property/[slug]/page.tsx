@@ -124,6 +124,9 @@ export default async function PropertyDetailsPage({
     return null
   }
 
+  const agent = property.agent as Agent
+  const agentImage = agent.image as Media
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Back Navigation */}
@@ -273,7 +276,7 @@ export default async function PropertyDetailsPage({
                 phone: (property.agent as Agent).phone,
                 email: (property.agent as Agent).email,
                 image: {
-                  url: '/user-image.avif',
+                  url: agentImage?.url || '/user-image.avif',
                   alt: (property.agent as Agent).name,
                 },
               }}

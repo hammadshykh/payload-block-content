@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { ChevronLeft, ChevronRight, X, Expand } from 'lucide-react'
 import { Media } from '@/payload-types'
+import Image from 'next/image'
 
 interface PropertyGalleryProps {
   images: Media[]
@@ -31,12 +32,13 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
       <div className="relative h-[60vh] bg-gray-900">
         {/* Main Image */}
         <div className="relative h-full">
-          <img
+          <Image
             src={
               images[currentImage]?.url ||
               'https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=800'
             }
             alt={images[currentImage]?.alt || title}
+            fill
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/20" />
