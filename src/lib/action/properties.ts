@@ -13,7 +13,7 @@ export const getAllProperties = async (): Promise<Property[]> => {
       sort: '-createdAt', // Newest first
     })
 
-    return docs
+    return docs || []
   } catch (error) {
     console.error('Error fetching properties:', error)
     return []

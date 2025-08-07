@@ -91,6 +91,18 @@ export const PropertiesClient = ({ properties }: { properties: Property[] }) => 
     },
   }
 
+  if (!properties)
+    return (
+      <div>
+        <div className="text-center py-12">
+          <p className="text-luxe-gray text-lg">No properties found matching your criteria.</p>
+          <p className="text-sm text-luxe-gray mt-2">
+            Try adjusting your filters to see more results.
+          </p>
+        </div>
+      </div>
+    )
+
   return (
     <div className="min-h-screen">
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -270,15 +282,6 @@ export const PropertiesClient = ({ properties }: { properties: Property[] }) => 
             )
           })}
         </div>
-
-        {filteredProperties.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-luxe-gray text-lg">No properties found matching your criteria.</p>
-            <p className="text-sm text-luxe-gray mt-2">
-              Try adjusting your filters to see more results.
-            </p>
-          </div>
-        )}
       </main>
     </div>
   )
