@@ -252,7 +252,7 @@ export const Properties: CollectionConfig = {
     drafts: true,
   },
   hooks: {
-    // afterChange: [revalidateProperty],
+    afterChange: [revalidateProperty],
     afterDelete: [revalidateDeleteProperty],
     beforeChange: [
       async ({ data, req, operation }) => {
